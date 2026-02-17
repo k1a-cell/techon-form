@@ -1,0 +1,329 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background: #111;
+    color: white;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* Preloader Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, red, black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.preloader img {
+    width: clamp(50px, 10vw, 70px);
+    height: clamp(50px, 10vw, 70px);
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.preloader h1 {
+    display: flex;
+    gap: 5px;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.preloader h1 span {
+    display: inline-block;
+    animation: arvion 1.4s ease-in-out infinite;
+}
+
+/* Staggered Animation Delays */
+.preloader h1 span:nth-child(1) { animation-delay: 0s; }
+.preloader h1 span:nth-child(2) { animation-delay: 0.25s; }
+.preloader h1 span:nth-child(3) { animation-delay: 0.5s; }
+.preloader h1 span:nth-child(4) { animation-delay: 0.75s; }
+.preloader h1 span:nth-child(5) { animation-delay: 1s; }
+.preloader h1 span:nth-child(6) { animation-delay: 1.25s; }
+
+@keyframes arvion {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        color: white;
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1);
+        color: red;
+    }
+}
+
+.preloader p {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+    margin-top: 10px;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.progress-container {
+    width: clamp(150px, 80vw, 220px);
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: red;
+    border-radius: 10px;
+    transition: width 0.25s linear;
+}
+
+.progress-text {
+    margin-top: 8px;
+    font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    color: #aaa;
+}
+
+/* Form Styles */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+form {
+    position: relative;
+    background: #111;
+    padding: clamp(20px, 5vw, 40px) clamp(20px, 5vw, 35px);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.712);
+    color: #eee;
+    overflow: hidden;
+}
+
+/* The Animated Glowing Border */
+form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, red, #00ffff, red, #ff00ff);
+    background-size: 400%;
+    border-radius: 20px;
+    z-index: -1;
+    animation: borderGlow 6s linear infinite;
+}
+
+@keyframes borderGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.form-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.form-header img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.form-header h1 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    color: red;
+    letter-spacing: 1px;
+}
+
+form label {
+    align-self: flex-start;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"] {
+    width: 100%;
+    padding: clamp(8px, 2.5vw, 10px);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #222;
+    color: white;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    min-height: 44px;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus {
+    border-color: red;
+    outline: none;
+}
+
+form input[type="submit"] {
+    background: red;
+    color: white;
+    border: none;
+    padding: clamp(10px, 2.5vw, 12px);
+    border-radius: 8px;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin-top: 10px;
+    min-height: 44px;
+}
+
+form input[type="submit"]:hover {
+    background: darkred;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 17, 0, 0.459);
+}
+
+/* Responsive Design */
+/* Mobile Phones (320px - 480px) */
+@media (max-width: 480px) {
+    body {
+        overflow-y: auto;
+    }
+    
+    .content {
+        min-height: 100vh;
+        padding: 15px;
+    }
+    
+    form {
+        width: 100%;
+    }
+    
+    .form-header {
+        margin-bottom: 20px;
+    }
+    
+    form label {
+        width: 100%;
+    }
+    
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"] {
+        margin-bottom: 12px;
+    }
+    
+    .preloader h1 span {
+        animation: arvion 1.2s ease-in-out infinite;
+    }
+}
+
+/* Small Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .content {
+        min-height: 100vh;
+        padding: 20px;
+    }
+    
+    form {
+        width: 95%;
+        max-width: 450px;
+    }
+    
+    .form-header {
+        margin-bottom: 25px;
+    }
+}
+
+/* Large Tablets and Small Desktops (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    form {
+        width: 90%;
+        max-width: 450px;
+    }
+}
+
+/* Large Desktops (1025px and above) */
+@media (min-width: 1025px) {
+    form {
+        width: 100%;
+        max-width: 420px;
+    }
+}
+
+/* Extra Small Devices (Below 320px) */
+@media (max-width: 319px) {
+    .preloader h1 {
+        gap: 3px;
+    }
+    
+    .form-header img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    form {
+        padding: 20px 15px;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) {
+    .content {
+        min-height: auto;
+        padding: 10px;
+    }
+    
+    form {
+        padding: 20px 25px;
+    }
+    
+    .form-header {
+        margin-bottom: 15px;
+    }
+    
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"] {
+        margin-bottom: 10px;
+    }
+}
+
+/* High DPI / Retina Displays */
+@media (min-device-pixel-ratio: 2) {
+    form {
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.712);
+    }
+}

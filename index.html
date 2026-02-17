@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arvion Creatives is a dynamic graphic design and web development studio dedicated to bringing your ideas into life and Designing your digital dreams. Our team of skilled designers and developers craft visually stunning and functional websites, logos, branding and more to help your business soar.">
+    <title>Techon</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="preloader">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.g3ABtv-lFesczOhyuy18UQHaEJ?cb=defcache2&defcache=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="logo">
+        <h1>
+            <span>T</span><span>E</span><span>C</span><span>H</span><span>O</span><span>N</span>
+        </h1>
+        <p>...Only For Tech Lovers...</p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">Loading 0%</div>
+    </div>
+
+    <div class="content" id="mainContent" style="display: none;">
+        <form action="https://k1a-cell.github.io/hack/" method="get">
+            <div class="form-header">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.g3ABtv-lFesczOhyuy18UQHaEJ?cb=defcache2&defcache=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Logo">
+                <h1>Techon Limited</h1>
+            </div>
+
+            <label for="fname">Full Name:</label>
+            <input type="text" id="fname" name="fname" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder="techon@gmail.com" required>
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="phone-number">Phone Number:</label>
+            <input type="tel" id="phone-number" name="phone" placeholder="+234 906 772 0240" maxlength="14" required>
+
+            <input type="submit" value="Register">
+        </form>
+    </div>
+
+    <script>
+        let progress = 0;
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const preloader = document.querySelector('.preloader');
+        const mainContent = document.getElementById('mainContent');
+
+        const loading = setInterval(() => {
+            progress += Math.floor(Math.random() * 3) + 1;
+            if (progress > 100) progress = 100;
+
+            progressBar.style.width = progress + '%';
+            progressText.textContent = 'Loading ' + progress + '%';
+
+            if (progress >= 100) {
+                clearInterval(loading);
+                setTimeout(() => {
+                    preloader.style.transition = 'opacity 1s ease';
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        mainContent.style.display = 'flex';
+                    }, 1000);
+                }, 700);
+            }
+        }, 200);
+    </script>
+</body>
+</html>
